@@ -1,16 +1,8 @@
-# COMP9321 Assignment3
-
 ## Team Member
-- Chenxuan Rong (z5121987)
-- Xiyan Wang (z5151289)
-- Pengyan Rao (z5099703)
-- Hangyu Wang (z5093273)
-
-## Schedule
-- 14/05/2018(Week11 Monday) Meeting One
-- 21/05/2018(Week12 Monday) Meeting Two
-- 28/05/2018(Week13 Monday) Due
-- 30/05/2018(Week13 Wednesday) Demo
+- Chenxuan Rong
+- Xiyan Wang 
+- Pengyan Rao 
+- Hangyu Wang 
 
 ## Expected feature lists
 
