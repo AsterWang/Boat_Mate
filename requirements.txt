@@ -1,0 +1,7 @@
+flask
+flask-restful
+mongoengine
+requests
+flask_cors
+PyPDF2
+pytz

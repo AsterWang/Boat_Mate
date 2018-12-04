@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<!--Author: Pengyan Rao, z5099703-->
+<!--For testing api-->
+<!-- url: http://127.0.0.1:5000/test -->
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script type="text/javascript" src="{{ url_for('static', filename='weather.js') }}"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+
+                document.querySelector('#form_weather').onsubmit = () => {
+                    // create_weather_div()
+                    const lat = document.querySelector('#lat').value;
+                    const lon = document.querySelector('#lon').value;
+
+                    console.log(`html: ${lat}, ${lon}`);
+                    // alert(`html: ${lat}, ${lon}`);
+
+                    const fstatus = create_weather_div(lat, lon);
+
+                    if (fstatus == false) {
+                      return false;
+                    }
+
+                };
+
+                document.querySelector('#form_all').onsubmit = () => {
+
+                    // Initialize new request
+                    const request = new XMLHttpRequest();
+                    request.open('GET', 'http://127.0.0.1:5000/boatramps');
+
+                    // Callback function for when request completes
+                    request.onload = () => {
+
+                        // Extract JSON data from request
+                        const data = JSON.parse(request.responseText);
+                        // const data = JSON.stringify(request.responseText);
+
+                        // Update the result div
+                        document.querySelector('#result_all').innerHTML = `<p>${JSON.stringify(data)}</p>`;
+                    }
+
+                    request.send();
+
+                    return false;
+                };
+
+                document.querySelector('#form_filter').onsubmit = () => {
+
+                    // Initialize new request
+                    const request = new XMLHttpRequest();
+                    // const filter_bbq = document.querySelector('#filter_bbq').value;
+                    // const filter_toilets = document.querySelector('#filter_toilets').value;
+                    request.open('GET', 'http://127.0.0.1:5000/boatramps/filter?has_bbq and has_toilets');
+
+                    // Callback function for when request completes
+                    request.onload = () => {
+
+                        // Extract JSON data from request
+                        const data = JSON.parse(request.responseText);
+                        // const data = JSON.stringify(request.responseText);
+
+                        // Update the result div
+                        document.querySelector('#result_filter').innerHTML = `<p>${JSON.stringify(data)}</p>`;
+                    }
+
+                    // const data = new FormData();
+                    // data.append('filter_bbq', filter_bbq);
+                    // data.append('filter_toilets', filter_toilets);
+
+                    request.send();
+
+                    return false;
+                };
+
+                document.querySelector('#form_safety').onsubmit = () => {
+
+                    // Initialize new request
+                    const request = new XMLHttpRequest();
+                    const boatramp_id = document.querySelector('#boatramp_id').value;
+                    request.open('GET', 'http://127.0.0.1:5000/boatramps/safetyanalysis/' + boatramp_id);
+
+                    // Callback function for when request completes
+                    request.onload = () => {
+
+                        // Extract JSON data from request
+                        const data = JSON.parse(request.responseText);
+                        // const data = JSON.stringify(request.responseText);
+
+                        // Update the result div
+                        document.querySelector('#result_safety').innerHTML = `<p>${JSON.stringify(data)}</p>`;
+                    }
+
+                    request.send();
+
+                    return false;
+                };
+
+            });
+        </script>
+        <title>Test</title>
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <form id="form_weather">
+                    <p><input id="lat" placeholder="latitude" value="-32.098654" type="text"></p>
+                    <p><input id="lon" placeholder="longitude" value="152.469059" type="text"></p>
+                    <p><input type="submit" class="btn btn-primary" value="Weather"></p>
+                </form>
+            </div>
+            <div id="weather_div" class="col-lg-10 col-lg-offset-1">
+              <div id="result_weather"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <h1>get_all_boat_ramps:</h1>
+                <form id="form_all">
+                    <input type="submit" class="btn btn-primary" value="Test1">
+                </form>
+                <br>
+                <div id="result_all"></div>
+                <hr>
+
+                <h1>get_boat_ramps_with_filter:</h1>
+                <p>http://127.0.0.1:5000/boatramps/filter?has_bbq and has_toilets</p>
+                <form id="form_filter">
+                    <!--has_bbq<input id="filter_bbq" name="ft" value="has_bbq" type="checkbox">-->
+                    <!--has_toilets<input id="filter_toilets" name="ft" value="has_toilets" type="checkbox">-->
+                    <input type="submit" class="btn btn-primary" value="Test2">
+                </form>
+                <br>
+                <div id="result_filter"></div>
+                <hr>
+
+                <h1>get_safety_analysis:</h1>
+                <p>eg. 1427</p>
+                <form id="form_safety">
+                    <input id="boatramp_id" autocomplete="off" autofocus placeholder="boatramp id" value="1427" type="text">
+                    <input type="submit" class="btn btn-primary" value="Test3">
+                </form>
+                <br>
+                <div id="result_safety"></div>
+            </div>
+        </div>
+    </body>
+</html>

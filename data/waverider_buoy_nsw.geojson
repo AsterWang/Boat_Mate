@@ -1,0 +1,40 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [153.694167, -28.870556]},
+      "properties": {"id": 1, "name": "Byron Bay", "coordinates": [153.694167, -28.870556]}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [153.269167, -30.3625]},
+      "properties": {"id": 2, "name": "Coffs Harbour", "coordinates": [153.269167, -30.3625]}
+    }, 
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [152.856111, -31.813889]},
+      "properties": {"id": 3, "name": "Crowdy Head", "coordinates": [152.856111, -31.813889]}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [151.408611, -33.771667]},
+      "properties": {"id": 4, "name": "Sydney", "coordinates": [151.408611, -33.771667]}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [151.021667, -34.471944]},
+      "properties": {"id": 5, "name": "Port Kembla", "coordinates": [151.021667, -34.471944]}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [150.343889, -35.703056]},
+      "properties": {"id": 6, "name": "Batemans Bay", "coordinates": [150.343889, -35.703056]}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [150.193333, -37.265833]},
+      "properties": {"id": 7, "name": "Eden", "coordinates": [150.193333, -37.265833]}
+    }
+  ]
+}
